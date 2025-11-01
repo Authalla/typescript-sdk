@@ -1,0 +1,28 @@
+# pnpm configuration for @authalla/sdk
+
+# Store location for global packages
+store-dir=~/.pnpm-store
+
+# Auto install peers - automatically install peer dependencies
+auto-install-peers=true
+
+# Strict peer dependencies - fail if peer dependencies are not met
+strict-peer-dependencies=false
+
+# Save exact versions (no ^ or ~) for production dependencies
+save-exact=false
+
+# Only allow pnpm to install packages
+engine-strict=true
+
+# Enable audit on install
+audit=true
+
+# Fail on missing dependencies
+frozen-lockfile=false
+
+# Security: Only install packages released at least 2880 minutes (2 days) ago
+# This helps mitigate supply chain attacks by requiring packages to age before installation
+# Value is in minutes: 2880 = 2 days (2 * 24 * 60)
+minimum-release-age=2880
+

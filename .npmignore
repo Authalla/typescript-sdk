@@ -1,0 +1,22 @@
+# Source files (keep only dist)
+src/
+*.ts
+!*.d.ts
+
+# Development files
+tsconfig.json
+vitest.config.ts
+.eslintrc.js
+.prettierrc
+
+# Documentation (README is included by default)
+examples/
+
+# Testing
+*.test.ts
+*.spec.ts
+__tests__/
+coverage/
+
+# Build tools
+.github/
