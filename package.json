@@ -37,8 +37,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/authalla/authalla-oauth2-server.git",
-    "directory": "js-sdk"
+    "url": "https://github.com/Authalla/typescript-sdk.git"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
