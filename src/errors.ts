@@ -19,9 +19,14 @@ export class AuthallaError extends Error {
   /**
    * Additional error details
    */
-  public readonly details?: any;
+  public readonly details?: unknown;
 
-  constructor(message: string, code: string, status?: number, details?: any) {
+  constructor(
+    message: string,
+    code: string,
+    status?: number,
+    details?: unknown
+  ) {
     super(message);
     this.name = "AuthallaError";
     this.code = code;
@@ -29,8 +34,17 @@ export class AuthallaError extends Error {
     this.details = details;
 
     // Maintains proper stack trace for where our error was thrown (only available on V8)
-    if ((Error as any).captureStackTrace) {
-      (Error as any).captureStackTrace(this, AuthallaError);
+    if (
+      typeof Error !== "undefined" &&
+      "captureStackTrace" in Error &&
+      typeof (Error as { captureStackTrace?: unknown }).captureStackTrace ===
+        "function"
+    ) {
+      (
+        Error as {
+          captureStackTrace: (error: Error, constructor: unknown) => void;
+        }
+      ).captureStackTrace(this, AuthallaError);
     }
   }
 }
@@ -39,7 +53,7 @@ export class AuthallaError extends Error {
  * Error thrown when validation fails (e.g., empty name, name too long)
  */
 export class AuthallaValidationError extends AuthallaError {
-  constructor(message: string, details?: any) {
+  constructor(message: string, details?: unknown) {
     super(message, "validation_error", 400, details);
     this.name = "AuthallaValidationError";
   }
@@ -53,7 +67,7 @@ export class AuthallaAuthenticationError extends AuthallaError {
     message: string,
     code: string = "invalid_token",
     status: number = 401,
-    details?: any
+    details?: unknown
   ) {
     super(message, code, status, details);
     this.name = "AuthallaAuthenticationError";
@@ -64,7 +78,7 @@ export class AuthallaAuthenticationError extends AuthallaError {
  * Error thrown when network requests fail
  */
 export class AuthallaNetworkError extends AuthallaError {
-  constructor(message: string, originalError?: any) {
+  constructor(message: string, originalError?: unknown) {
     super(message, "network_error", undefined, originalError);
     this.name = "AuthallaNetworkError";
   }

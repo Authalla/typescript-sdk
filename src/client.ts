@@ -138,7 +138,7 @@ export class AuthallaClient {
   private async request<T>(
     method: "GET" | "PUT" | "POST" | "DELETE",
     path: string,
-    body?: any
+    body?: Record<string, unknown>
   ): Promise<T> {
     const url = `${this.baseUrl}${path}`;
 

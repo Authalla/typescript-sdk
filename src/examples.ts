@@ -123,7 +123,17 @@ async function customDomainExample() {
 // ============================================================================
 
 // Express route handler example
-async function backendExample(req: any, res: any) {
+interface ExpressRequest {
+  body: { name: string };
+  session: { accessToken: string };
+}
+
+interface ExpressResponse {
+  status: (code: number) => ExpressResponse;
+  json: (data: unknown) => void;
+}
+
+async function backendExample(req: ExpressRequest, res: ExpressResponse) {
   try {
     const client = new AuthallaClient({
       baseUrl: "https://my-tenant.authalla.com",

@@ -83,5 +83,5 @@ export interface OAuth2ErrorResponse {
   error_uri?: string;
 
   /** Additional error details (validation errors, etc.) */
-  details?: any;
+  details?: unknown;
 }
