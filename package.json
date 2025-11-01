@@ -22,7 +22,8 @@
     "test:watch": "vitest --watch",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "version": "git add -A && git commit -m 'chore: bump version' || true"
   },
   "keywords": [
     "authalla",
